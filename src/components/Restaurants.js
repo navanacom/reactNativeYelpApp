@@ -2,10 +2,17 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import yelp from '../api/yelp'
 import useRestaurants from '../hooks/useRestaurants'
+import { useEffect } from 'react'
 
-const Restaurants = () => {
+const Restaurants = ({term}) => {
 
     const [{data, loading, error}, searchRestaurants] = useRestaurants()
+
+    useEffect(() => {
+        searchRestaurants(term)
+    }, [term])
+
+    console.log(data)
     
   return (
     <View style={styles.container}>

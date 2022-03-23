@@ -46,7 +46,7 @@ export default function App() {
       
       <Categorise commonCats={commonCats} term={term} setTerm={setTerm} />
 
-      <Restaurants />
+      <Restaurants term={term} />
    
       <StatusBar style="auto" />
     </View>
