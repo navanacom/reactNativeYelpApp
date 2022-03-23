@@ -4,6 +4,7 @@ import Header from './src/components/Header';
 import Search from './src/components/Search';
 import { useState } from 'react';
 import Categorise from './src/components/Categorise';
+import Restaurants from './src/components/Restaurants';
 
 export default function App() {
   const [term, setTerm] = useState("Burger")
@@ -44,6 +45,8 @@ export default function App() {
       <Search setTerm={setTerm} />
       
       <Categorise commonCats={commonCats} term={term} setTerm={setTerm} />
+
+      <Restaurants />
    
       <StatusBar style="auto" />
     </View>
