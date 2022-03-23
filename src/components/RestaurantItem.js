@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { withNavigation } from 'react-navigation'
 
-const RestaurantItem = ({restaurant}) => {
+const RestaurantItem = ({restaurant, navigation}) => {
   return (
-    <View style={[styles.container]}>
+      <TouchableOpacity onPress={() => navigation.navigate('Rest', {id: restaurant.id})}>
+<View style={[styles.container]}>
       <Image style={styles.image} source={{uri: restaurant.image_url}} />
       <View style={styles.infoContainer}>
           <Text style={styles.header}>{restaurant.name}</Text>
@@ -13,10 +15,12 @@ const RestaurantItem = ({restaurant}) => {
           </View>
       </View>
     </View>
+      </TouchableOpacity>
+    
   )
 }
 
-export default RestaurantItem
+export default withNavigation(RestaurantItem)
 
 const styles = StyleSheet.create({
     container: {

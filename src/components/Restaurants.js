@@ -5,6 +5,7 @@ import useRestaurants from '../hooks/useRestaurants'
 import { useEffect } from 'react'
 import RestaurantItem from './RestaurantItem'
 
+
 const Restaurants = ({term}) => {
 
     const [{data, loading, error}, searchRestaurants] = useRestaurants()
