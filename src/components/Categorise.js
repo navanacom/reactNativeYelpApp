@@ -4,7 +4,9 @@ import CategoryItem from './CategoryItem'
 
 const Categorise = ({commonCats, setTerm, term}) => {
   return (
-    <FlatList keyExtractor={(category) => category.name} showsHorizontalScrollIndicator={false} horizontal data={commonCats} renderItem={({item, index}) =>( <CategoryItem handlePress={() => setTerm(item.name)} active={item.name === term} index={index} name={item.name} imgUrl={item.imgUrl} /> )} />
+    <View>
+        <FlatList keyExtractor={(category) => category.name} showsHorizontalScrollIndicator={false} horizontal data={commonCats} renderItem={({item, index}) =>( <CategoryItem handlePress={() => setTerm(item.name)} active={item.name === term} index={index} name={item.name} imgUrl={item.imgUrl} /> )} />
+    </View>
   )
 }
 

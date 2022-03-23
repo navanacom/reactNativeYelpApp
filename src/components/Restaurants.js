@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ActivityIndicator, FlatList } from 'react-native'
 import React from 'react'
 import yelp from '../api/yelp'
 import useRestaurants from '../hooks/useRestaurants'
 import { useEffect } from 'react'
+import RestaurantItem from './RestaurantItem'
 
 const Restaurants = ({term}) => {
 
@@ -12,11 +13,21 @@ const Restaurants = ({term}) => {
         searchRestaurants(term)
     }, [term])
 
-    console.log(data)
+    if(loading) return <ActivityIndicator size='large' marginVertical={30} />
+    if(error) return (
+        <View style={styles.container}>
+            <Text style={styles.header}>{error}</Text>
+        </View>
+    )
     
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Restaurants</Text>
+      <FlatList data={data} keyExtractor={rest => rest.id}
+      renderItem={({item}) => (
+          <RestaurantItem restaurant={item} />
+      )}
+      />
     </View>
   )
 }
@@ -27,12 +38,12 @@ const styles = StyleSheet.create({
     container : {
         marginHorizontal: 25,
         marginVertical: 15,
-        flex: 1
+        
     },
     header: {
         fontWeight: 'bold',
         fontSize: 20,
         paddingBottom: 10,
-        height: 10
+        
     }
 })
