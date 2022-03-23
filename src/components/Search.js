@@ -10,13 +10,14 @@ const Search = ({setTerm}) => {
   const handleEndEditing = () => {
     if(!input) return
     setTerm(input)
+    setInput("")
   }
 
   return (
     <View style={[styles.container, styles.elevation]}>
         <FontAwesome name='search' size={25} />
         
-      <TextInput onEndEditing={handleEndEditing} onChangeText={(text) => setInput(text)} style={styles.input} placeholder='Restaurants, Food' />
+      <TextInput value={input} onEndEditing={handleEndEditing} onChangeText={(text) => setInput(text)} style={styles.input} placeholder='Restaurants, Food' />
     </View>
   )
 }
