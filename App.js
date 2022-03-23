@@ -41,7 +41,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header />
-      <Search />
+      <Search setTerm={setTerm} />
       
       <FlatList keyExtractor={(category) => category.name} showsHorizontalScrollIndicator={false} horizontal data={commonCats} renderItem={({item, index}) =>( <CategoryItem handlePress={() => setTerm(item.name)} active={item.name === term} index={index} name={item.name} imgUrl={item.imgUrl} /> )} />
    
