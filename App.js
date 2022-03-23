@@ -3,8 +3,11 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import CategoryItem from './src/components/CategoryItem';
 import Header from './src/components/Header';
 import Search from './src/components/Search';
+import { useState } from 'react';
 
 export default function App() {
+  const [term, setTerm] = useState("Burger")
+
   const commonCats = [
     {
       name: "Burger",
@@ -40,7 +43,7 @@ export default function App() {
       <Header />
       <Search />
       
-      <FlatList keyExtractor={(category) => category.name} showsHorizontalScrollIndicator={false} horizontal data={commonCats} renderItem={({item, index}) =>( <CategoryItem index={index} name={item.name} imgUrl={item.imgUrl} /> )} />
+      <FlatList keyExtractor={(category) => category.name} showsHorizontalScrollIndicator={false} horizontal data={commonCats} renderItem={({item, index}) =>( <CategoryItem handlePress={() => setTerm(item.name)} active={item.name === term} index={index} name={item.name} imgUrl={item.imgUrl} /> )} />
    
       <StatusBar style="auto" />
     </View>
